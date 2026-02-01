@@ -12,3 +12,6 @@ It contains almost all tools mentioned in CEH, OSCP, eCPPT and PNPT
 ![summary](https://github.com/abdullah-baghuth/Ethical-Hacking-Toolkit/blob/main/summary.gif)
 
 Click [Here](https://0xcybery.github.io/ehtk/) To Visit The Page
+
+## Automation Workflows
+- [Automation workflows and shortcuts](automation.md)

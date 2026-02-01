@@ -12,3 +12,10 @@ It contains almost all tools mentioned in CEH, OSCP, eCPPT and PNPT
 ![summary](https://github.com/abdullah-baghuth/Ethical-Hacking-Toolkit/blob/main/summary.gif)
 
 Click [Here](https://0xcybery.github.io/ehtk/) To Visit The Page
+
+## Automation Workflows
+- [Automation workflows and shortcut runner](automation.md)
+
+## Raspberry Pi GUI
+- [Raspberry Pi 3B+ Security Console](raspberry-pi-gui.html)
+- Windows launcher: run `launch-gui.bat` to open the console in Chrome.

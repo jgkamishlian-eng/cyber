@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Raspberry Pi 3B+ Security Console</title>
+    <link rel="stylesheet" href="css/pi-gui.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>Raspberry Pi 3B+ Security Console</h1>
+        <p>Quick shortcuts for common automation tasks and diagnostics.</p>
+      </div>
+      <div class="status">
+        <span class="badge">Offline Safe Mode</span>
+        <span class="badge">Local Scripts</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="actions">
+        <article class="action-card defensive">
+          <h2>Internet Check (Defensive)</h2>
+          <p>Validate connectivity and DNS resolution.</p>
+          <code>ping -c 4 8.8.8.8</code>
+          <button data-command="ping -c 4 8.8.8.8">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Password Audit</h2>
+          <p>Run a local password audit with a wordlist.</p>
+          <code>sudo john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt</code>
+          <button data-command="sudo john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Fast Port Discovery</h2>
+          <p>Quickly identify open ports on a target.</p>
+          <code>sudo nmap -T4 -F 192.168.1.0/24</code>
+          <button data-command="sudo nmap -T4 -F 192.168.1.0/24">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Web Scan</h2>
+          <p>Run a focused web scan against discovered HTTP services.</p>
+          <code>./scripts/automation-shortcut.sh nmap-nikto 192.168.1.10 ./captures</code>
+          <button data-command="./scripts/automation-shortcut.sh nmap-nikto 192.168.1.10 ./captures">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Subdomain Enumeration</h2>
+          <p>Map discovered subdomains and scan them.</p>
+          <code>./scripts/automation-shortcut.sh amass-nmap example.com ./captures -- -sV -T4</code>
+          <button data-command="./scripts/automation-shortcut.sh amass-nmap example.com ./captures -- -sV -T4">Copy Command</button>
+        </article>
+        <article class="action-card defensive">
+          <h2>SSL/TLS Scan (Defensive)</h2>
+          <p>Check TLS configuration and supported ciphers.</p>
+          <code>nmap --script ssl-enum-ciphers -p 443 example.com</code>
+          <button data-command="nmap --script ssl-enum-ciphers -p 443 example.com">Copy Command</button>
+        </article>
+        <article class="action-card defensive">
+          <h2>Wireless Scan (Defensive)</h2>
+          <p>List nearby wireless networks and signal strength.</p>
+          <code>sudo iwlist wlan0 scan | grep -E "ESSID|Quality"</code>
+          <button data-command="sudo iwlist wlan0 scan | grep -E &quot;ESSID|Quality&quot;">Copy Command</button>
+        </article>
+        <article class="action-card defensive">
+          <h2>Listening Mode (Defensive)</h2>
+          <p>Watch incoming traffic on an interface.</p>
+          <code>sudo tcpdump -i eth0 -nn</code>
+          <button data-command="sudo tcpdump -i eth0 -nn">Copy Command</button>
+        </article>
+        <article class="action-card defensive">
+          <h2>Wi-Fi Kill Switch (Defensive)</h2>
+          <p>Kick clients off a Wi-Fi network (authorized testing only).</p>
+          <code>sudo aireplay-ng --deauth 25 -a AA:BB:CC:DD:EE:FF wlan0mon</code>
+          <button data-command="sudo aireplay-ng --deauth 25 -a AA:BB:CC:DD:EE:FF wlan0mon">Copy Command</button>
+        </article>
+        <article class="action-card defensive">
+          <h2>VoIP Capture (Defensive)</h2>
+          <p>Capture SIP/RTP traffic for VoIP analysis.</p>
+          <code>sudo tshark -i eth0 -f "udp port 5060 or udp portrange 10000-20000" -w voip.pcapng</code>
+          <button data-command="sudo tshark -i eth0 -f &quot;udp port 5060 or udp portrange 10000-20000&quot; -w voip.pcapng">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Packet Capture</h2>
+          <p>Capture network traffic during a scan.</p>
+          <code>sudo ./scripts/automation-shortcut.sh nmap-wireshark 192.168.1.0/24 eth0 ./captures</code>
+          <button data-command="sudo ./scripts/automation-shortcut.sh nmap-wireshark 192.168.1.0/24 eth0 ./captures">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Vulnerability Scan</h2>
+          <p>Run Nmap vuln scripts against a target.</p>
+          <code>sudo nmap --script vuln 192.168.1.10</code>
+          <button data-command="sudo nmap --script vuln 192.168.1.10">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Wi-Fi Password Audit</h2>
+          <p>Recover Wi-Fi keys from a captured handshake (authorized only).</p>
+          <code>aircrack-ng -w /usr/share/wordlists/rockyou.txt -b AA:BB:CC:DD:EE:FF capture.cap</code>
+          <button data-command="aircrack-ng -w /usr/share/wordlists/rockyou.txt -b AA:BB:CC:DD:EE:FF capture.cap">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>Bluetooth Pairing Audit</h2>
+          <p>Test BLE pairing captures for weak keys (authorized only).</p>
+          <code>crackle -i ble-capture.pcap</code>
+          <button data-command="crackle -i ble-capture.pcap">Copy Command</button>
+        </article>
+        <article class="action-card">
+          <h2>NFC Key Audit</h2>
+          <p>Recover MIFARE Classic keys from authorized tags.</p>
+          <code>mfoc -O tag-dump.mfd -P 500</code>
+          <button data-command="mfoc -O tag-dump.mfd -P 500">Copy Command</button>
+        </article>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Tip: Update target IPs, domains, and interfaces before running commands.</p>
+    </footer>
+
+    <script>
+      const buttons = document.querySelectorAll('button[data-command]');
+      buttons.forEach((button) => {
+        button.addEventListener('click', async () => {
+          const command = button.dataset.command;
+          try {
+            await navigator.clipboard.writeText(command);
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy Command';
+            }, 1200);
+          } catch (error) {
+            button.textContent = 'Copy failed';
+            setTimeout(() => {
+              button.textContent = 'Copy Command';
+            }, 1200);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

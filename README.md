@@ -14,4 +14,4 @@ It contains almost all tools mentioned in CEH, OSCP, eCPPT and PNPT
 Click [Here](https://0xcybery.github.io/ehtk/) To Visit The Page
 
 ## Automation Workflows
-- [Nmap + Wireshark automated capture](automation.md)
+- [Automation workflows and shortcuts](automation.md)
